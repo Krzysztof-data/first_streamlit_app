@@ -30,8 +30,9 @@ st.dataframe(fruits_to_show)
 
 st.header("Fruityvice Fruit Advice!")
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response.json()) # just writes the data to the screen
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi")
+
+
 
 # take the json version of the response and normalize it
 
