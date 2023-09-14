@@ -45,11 +45,9 @@ try:
     st.error("Please select a fruit to get information.")
   else:
       back_from_fuction = get_fruityvice_data(fruit_choice)
+       #output it the screen as a table
       st.dataframe(back_from_function)
     
-    #output it the screen as a table
-    st.dataframe(fruityvice_normalized)
-
 except URLError as e:
   # don't run anythig past here while we troubleshoot
   st.error()
