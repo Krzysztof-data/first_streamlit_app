@@ -48,9 +48,9 @@ try:
        #output it the screen as a table
       st.dataframe(back_from_function)
     
-except URLError as e:
+#except URLError as e:
   # don't run anythig past here while we troubleshoot
-  st.error()
+#  st.error()
 
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
