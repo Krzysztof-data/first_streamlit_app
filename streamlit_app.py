@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 import snowflake.connector
+from urllib.error import URLError
 
 st.title('My Parents New Healthy Dinner')
 
@@ -29,6 +30,7 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # display the table on the page
 st.dataframe(fruits_to_show)
 
+# new section to display fruityvice api response
 st.header("Fruityvice Fruit Advice!")
 
 fruit_choice = st.text_input('What fruit would you like information about?', 'Kiwi')
