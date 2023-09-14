@@ -30,24 +30,23 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # display the table on the page
 st.dataframe(fruits_to_show)
 
+
 # new section to display fruityvice api response
 st.header("Fruityvice Fruit Advice!")
 
-fruit_choice = st.text_input('What fruit would you like information about?', 'Kiwi')
-st.write('The user entered', fruit_choice)
-
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
-
-# take the json version of the response and normalize it
-
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-
-#output it the screen as a table
-
-st.dataframe(fruityvice_normalized)
-
-# don't run anythig past here while we troubleshoot
-st.stop()
+try:
+  fruit_choice = st.text_input('What fruit would you like information about?')
+  if not friut_choice:
+    st.error("Please select a fruit to get information.")
+  else:
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+    # take the json version of the response and normalize it
+    fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+    #output it the screen as a table
+    st.dataframe(fruityvice_normalized)
+except URLError as e:
+  # don't run anythig past here while we troubleshoot
+  st.error()
 
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
