@@ -36,8 +36,6 @@ st.write('The user entered', fruit_choice)
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
-
-
 # take the json version of the response and normalize it
 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
@@ -56,3 +54,6 @@ st.dataframe(my_data_rows)
 # Allow the end user to add a fruit to the list
 add_my_fruit = st.text_input('What fruit would you like to add?')
 st.write('Thanks for adding', add_my_fruit)
+
+# This will not work correctly, but just go with it for now
+my_cur.execute("insert into fruit_load_list values ('from streamlit')")
