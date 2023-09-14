@@ -42,11 +42,11 @@ st.header("Fruityvice Fruit Advice!")
 try:
   fruit_choice = st.text_input('What fruit would you like information about?')
   if not fruit_choice:
-    st.error("Please select a fruit to get information.")
+        st.error("Please select a fruit to get information.")
   else:
-      back_from_fuction = get_fruityvice_data(fruit_choice)
-       #output it the screen as a table
-      st.dataframe(back_from_function)
+        back_from_fuction = get_fruityvice_data(fruit_choice)
+        #output it the screen as a table
+        st.dataframe(back_from_function)
     
 except URLError as e:
   # don't run anythig past here while we troubleshoot
