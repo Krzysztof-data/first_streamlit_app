@@ -44,6 +44,9 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 
 st.dataframe(fruityvice_normalized)
 
+# don't run anythig past here while we troubleshoot
+st.stop()
+
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * FROM fruit_load_list")
